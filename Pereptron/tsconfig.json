@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "none",
+    "outFile": "./sketch.js",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "rootDir": "./sketch/",
+    "target": "es5",
+    "moduleResolution": "node"
+  }
+}
