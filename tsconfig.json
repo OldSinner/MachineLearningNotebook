@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "module": "none",
-    "outFile": "./sketch.js",
+    "outDir": "",
+    "rootDir": "ts",
     "preserveConstEnums": true,
     "removeComments": true,
-    "rootDir": "./sketch/",
     "target": "es5",
     "moduleResolution": "node"
   }
