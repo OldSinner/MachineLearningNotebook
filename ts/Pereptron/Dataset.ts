@@ -1,4 +1,12 @@
-export default class Dataset {}
+export default class Dataset {
+  points: Point[]
+  constructor(numberOfPoints: number) {
+    this.points = Array(numberOfPoints)
+    for (let i = 0; i < this.points.length; i++) {
+      this.points[i] = new Point(random(0, width), random(0, height))
+    }
+  }
+}
 export class Point {
   x: number
   y: number
