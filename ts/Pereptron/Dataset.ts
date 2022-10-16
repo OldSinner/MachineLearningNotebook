@@ -2,10 +2,14 @@ import { MapToCanvas } from './Utils.js'
 
 export default class Dataset {
   points: Point[]
-  constructor(numberOfPoints: number) {
+  fun: Function
+  constructor(
+    numberOfPoints: number,
+    fun: Function = (x: number, y: number) => y,
+  ) {
     this.points = Array(numberOfPoints)
     for (let i = 0; i < this.points.length; i++) {
-      this.points[i] = new Point(random(-1, 1), random(-1, 1))
+      this.points[i] = new Point(random(-1, 1), random(-1, 1), fun)
     }
   }
 }
@@ -13,10 +17,10 @@ export class Point {
   x: number
   y: number
   target: number
-  constructor(x: number, y: number) {
+  constructor(x: number, y: number, fun: Function) {
     this.x = x
     this.y = y
-    this.target = x <= y ? 1 : -1
+    this.target = fun(x, y) >= y ? 1 : -1
   }
   show(rgb: { r: number; g: number; b: number }) {
     push()
