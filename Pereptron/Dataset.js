@@ -12,7 +12,7 @@ var Point = (function () {
     function Point(x, y) {
         this.x = x;
         this.y = y;
-        this.target = x < y ? 1 : -1;
+        this.target = x <= y ? 1 : -1;
     }
     Point.prototype.show = function (rgb) {
         push();

@@ -14,7 +14,7 @@ export class Point {
   constructor(x: number, y: number) {
     this.x = x
     this.y = y
-    this.target = x < y ? 1 : -1
+    this.target = x <= y ? 1 : -1
   }
   show(rgb: { r: number; g: number; b: number }) {
     push()

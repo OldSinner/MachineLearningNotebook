@@ -17,7 +17,7 @@ var Perceptron = (function () {
         return this.Activate(sum);
     };
     Perceptron.prototype.Activate = function (sum) {
-        return sum > 0 ? 1 : -1;
+        return sum >= 0 ? 1 : -1;
     };
     Perceptron.prototype.Train = function (inputs, target) {
         var guess = this.Calculate(inputs);

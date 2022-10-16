@@ -18,7 +18,7 @@ export default class Perceptron {
     return this.Activate(sum)
   }
   Activate(sum: number) {
-    return sum > 0 ? 1 : -1
+    return sum >= 0 ? 1 : -1
   }
   // Tune the weights to fit the inputs
   Train(inputs: number[], target: number) {
