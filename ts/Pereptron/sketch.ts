@@ -4,12 +4,13 @@ import { MapToCanvas, MapToCaresian, MAX_VALUE, MIN_VALUE } from './Utils.js'
 var p: Perceptron
 var dataset: Dataset
 var checkbox
+var canvas
 const divideFunction = (x: number) => {
   return 2 * x + 0.1
 }
 
 function setup() {
-  createCanvas(1000, 1000)
+  canvas = createCanvas(1000, 1000)
   p = new Perceptron(2)
   dataset = new Dataset(100, divideFunction)
   checkbox = createCheckbox('L', false)
@@ -32,9 +33,9 @@ function draw() {
     }
     // Show Point
     var guess = p.Calculate([point.x, point.y])
-    point.show(
-      guess === point.target ? { r: 0, g: 0, b: 0 } : { r: 0, g: 0, b: 0 },
-    )
+    if (guess !== point.target) {
+    }
+    point.show()
   })
 }
 function drawDivider(min = MIN_VALUE, max = MAX_VALUE) {

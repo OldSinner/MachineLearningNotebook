@@ -2,7 +2,7 @@ import { MapToCanvas, MAX_VALUE, MIN_VALUE } from './Utils.js'
 
 export default class Perceptron {
   weights: number[]
-  lr: number = 0.1
+  lr: number = 0.01
   biasWeight: number
   constructor(numberOfWeight: number) {
     this.weights = Array(numberOfWeight)
