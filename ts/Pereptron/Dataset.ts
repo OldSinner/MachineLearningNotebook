@@ -20,7 +20,7 @@ export class Point {
   constructor(x: number, y: number, fun: Function) {
     this.x = x
     this.y = y
-    this.target = fun(x, y) >= y ? 1 : -1
+    this.target = fun(x) >= y ? 1 : -1
   }
   show(rgb: { r: number; g: number; b: number } = { r: 0, g: 0, b: 0 }) {
     push()

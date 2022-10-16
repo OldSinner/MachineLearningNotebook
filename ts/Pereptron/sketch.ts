@@ -17,7 +17,10 @@ function setup() {
 }
 
 function draw() {
-  background(0)
+  background(30)
+  stroke(80)
+  line(width / 2, 0, width / 2, height)
+  line(0, height / 2, width, height / 2)
   stroke(255)
   drawDivider()
   stroke(255, 0, 0)
