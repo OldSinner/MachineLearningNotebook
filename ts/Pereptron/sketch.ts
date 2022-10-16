@@ -1,5 +1,6 @@
 import Dataset, { Point } from './Dataset.js'
 import Perceptron from './Perceptron.js'
+import { MapToCanvas, MapToCaresian } from './Utils.js'
 var p: Perceptron
 var dataset: Dataset
 var checkbox
@@ -29,11 +30,13 @@ function draw() {
 }
 function drawDivider() {
   stroke(255)
-  line(0, 0, width, height)
+  line(width, 0, 0, height)
   stroke(0)
 }
 window.mousePressed = () => {
-  var point = new Point(mouseX, mouseY)
+  var [px, py] = MapToCaresian(mouseX, mouseY)
+  console.log(px, py)
+  var point = new Point(px, py)
   dataset.points.push(point)
 }
 
