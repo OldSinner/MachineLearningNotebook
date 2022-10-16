@@ -22,7 +22,7 @@ export class Point {
     this.y = y
     this.target = fun(x, y) >= y ? 1 : -1
   }
-  show(rgb: { r: number; g: number; b: number }) {
+  show(rgb: { r: number; g: number; b: number } = { r: 0, g: 0, b: 0 }) {
     push()
     stroke(rgb.r, rgb.g, rgb.b)
     var [px, py] = MapToCanvas(this.x, this.y)
