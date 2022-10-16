@@ -4,15 +4,20 @@ var p;
 var dataset;
 function setup() {
     createCanvas(windowHeight - 10, windowHeight - 10);
-    background(1);
     p = new Perceptron(2);
     dataset = new Dataset(100);
-    var result = p.Calculate([1, 1]);
-    console.log(result);
 }
 function draw() {
-    background(0, 20);
-    dataset.points.forEach(function (point) { return point.show(); });
+    background(0);
+    drawDivider();
+    strokeWeight(2);
+    dataset.points.forEach(function (point) {
+        p.Train([point.x, point.y], point.target);
+        var guess = p.Calculate([point.x, point.y]);
+        point.show(guess === point.target ? { r: 0, g: 255, b: 0 } : { r: 0, g: 0, b: 0 });
+    });
+}
+function drawDivider() {
     stroke(255);
     line(0, 0, width, height);
     stroke(0);

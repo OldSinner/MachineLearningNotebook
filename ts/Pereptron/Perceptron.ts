@@ -1,5 +1,6 @@
 export default class Perceptron {
   weights: number[]
+  lr: number = 0.1
   constructor(numberOfWeight: number) {
     this.weights = Array(numberOfWeight)
     for (let i = 0; i < this.weights.length; i++) {
@@ -18,5 +19,13 @@ export default class Perceptron {
   }
   Activate(sum: number) {
     return sum > 0 ? 1 : -1
+  }
+  // Tune the weights to fit the inputs
+  Train(inputs: number[], target: number) {
+    let guess = this.Calculate(inputs)
+    let error = target - guess
+    for (let i = 0; i < this.weights.length; i++) {
+      this.weights[i] += error * inputs[i] * this.lr
+    }
   }
 }
