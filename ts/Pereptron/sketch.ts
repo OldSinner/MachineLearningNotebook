@@ -1,13 +1,15 @@
 import Perceptron from './Perceptron.js'
+var p: Perceptron
 function setup() {
-  createCanvas(windowWidth, windowHeight)
+  createCanvas(windowWidth - 10, windowHeight - 10)
   background(1)
-  var x = new Perceptron()
+  p = new Perceptron(2)
+  var result = p.Calculate([1, 1])
+  console.log(result)
 }
 
 function draw() {
   background(0, 20)
-  circle(mouseX, mouseY, 100)
 }
 
 window.setup = setup
