@@ -1,9 +1,11 @@
 {
+  "type": "module",
   "devDependencies": {
     "typescript": "^4.8.4"
   },
   "dependencies": {
     "@types/p5": "^1.4.3",
-    "p5": "^1.4.2"
+    "p5": "^1.4.2",
+    "ts-node": "^10.9.1"
   }
 }
