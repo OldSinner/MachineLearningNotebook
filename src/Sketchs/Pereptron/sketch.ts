@@ -53,6 +53,7 @@ window.mousePressed = () => {
   var point = new Point(px, py, divideFunction)
   dataset.points.push(point)
 }
-
+// @ts-ignore
 window.setup = setup
+// @ts-ignore
 window.draw = draw
