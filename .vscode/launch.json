@@ -7,10 +7,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}\\src\\MultiLayerPerceptron\\main.ts",
-      "outFiles": ["${workspaceFolder}/**/*.js"]
+      "name": "Launch ts",
+      "program": "${workspaceFolder}\\src\\console.ts",
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "console": "internalConsole",
+      "protocol": "inspector"
     }
   ]
 }
