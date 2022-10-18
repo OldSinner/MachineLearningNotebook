@@ -88,6 +88,15 @@ export default class MatrixMath {
     return this
   }
   ///////////////////////////
+  map(func: (value: number, rowIndex: number, colIndex: number) => number) {
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        let val = this[i][j]
+        this[i][j] = func(val, i, j)
+      }
+    }
+  }
+  ///////////////////////////
   clone(): MatrixMath {
     return JSON.parse(JSON.stringify(this))
   }
