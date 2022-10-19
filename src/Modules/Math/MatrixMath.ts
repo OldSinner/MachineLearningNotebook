@@ -78,26 +78,50 @@ export default class MatrixMath {
     return result
   }
 
+  static FromArray(array: number[]): MatrixMath {
+    var matrix = new MatrixMath(array.length, 1)
+    for (let i = 0; i < array.length; i++) {
+      matrix[i][0] = array[i]
+    }
+    return matrix
+  }
+
+  static ToArray(matrix: MatrixMath): number[] {
+    var array = []
+    for (let i = 0; i < matrix.rows; i++) {
+      for (let j = 0; j < matrix.cols; j++) {
+        array.push(matrix[i][j])
+      }
+    }
+    return array
+  }
+
   ///////////////////////////
   Randomize(): MatrixMath {
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
-        this[i][j] = Math.floor(Math.random() * 10)
+        this[i][j] = Math.random() * 2 - 1
       }
     }
     return this
   }
   ///////////////////////////
-  map(func: (value: number, rowIndex: number, colIndex: number) => number) {
+  Map(func: (value: number) => number) {
     for (let i = 0; i < this.rows; i++) {
       for (let j = 0; j < this.cols; j++) {
         let val = this[i][j]
-        this[i][j] = func(val, i, j)
+        this[i][j] = func(val)
       }
     }
   }
   ///////////////////////////
   clone(): MatrixMath {
-    return JSON.parse(JSON.stringify(this))
+    var newMatrix = new MatrixMath(this.rows, this.cols)
+    for (let i = 0; i < this.rows; i++) {
+      for (let j = 0; j < this.cols; j++) {
+        newMatrix[i][j] = this[i][j]
+      }
+    }
+    return newMatrix
   }
 }
