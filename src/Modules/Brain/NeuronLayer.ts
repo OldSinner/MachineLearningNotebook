@@ -21,4 +21,6 @@ export class NeuronLayer {
 
     return MatrixMath.ToArray(outputs)
   }
+
+  Train(nextWeight : MatrixMath) {}
 }

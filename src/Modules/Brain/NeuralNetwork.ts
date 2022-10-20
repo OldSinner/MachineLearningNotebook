@@ -27,5 +27,30 @@ export default class Neuralnetwork {
     return previousNodesOutput
   }
 
-  Train(inputs: number[], target: number) {}
+  Train(inputs: number[], targets: number[]) {
+    let outputs = this.FeedForward(inputs)
+    let errorsArray = new Array<MatrixMath>()
+
+    // Calculate the error
+    let errors = new Array<number>()
+    for (let i = 0; i < outputs.length; i++) {
+      errors.push(targets[i] - outputs[i])
+    }
+
+    // Calculate Error List
+    let errorMatrix = MatrixMath.FromArray(errors)
+    errorMatrix = MatrixMath.Transpose(errorMatrix)
+    errorsArray.push(errorMatrix)
+
+    for (let i = this.layers.length - 1; i >= 0; i--) {
+      let layer = this.layers[i]
+      var newError = MatrixMath.Multiply(
+        MatrixMath.Transpose(layer.weight),
+        errorsArray[errorsArray.length - 1],
+      )
+      errorsArray.push(newError)
+    }
+
+    console.table(errorsArray)
+  }
 }
