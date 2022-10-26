@@ -1,11 +1,16 @@
 {
-  "type": "module",
+  "main": "index.js",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel"
+  },
   "devDependencies": {
     "typescript": "^4.8.4"
   },
   "dependencies": {
     "@types/p5": "^1.4.3",
     "p5": "^1.4.2",
+    "synaptic": "^1.1.4",
     "ts-node": "^10.9.1"
   }
 }

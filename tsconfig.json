@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "skipLibCheck": true,
     "module": "ES6",
     "rootDir": "./src",
     "preserveConstEnums": true,
