@@ -17,6 +17,10 @@ export default class Neuralnetwork {
     return 1 / (1 + Math.exp(-x))
   }
 
+  private dsigmoid(y: number) {
+    return y * (1 - y)
+  }
+
   FeedForward(inputs: number[]): number[] {
     // Generating the Hidden Outputs
     var previousNodesOutput = inputs
@@ -27,9 +31,24 @@ export default class Neuralnetwork {
     return previousNodesOutput
   }
 
+  GetLayersOutput(inputs: number[]): MatrixMath[] {
+    var memory = new Array<MatrixMath>()
+    var previousNodesOutput = inputs
+    memory.push(MatrixMath.FromArray(previousNodesOutput))
+    this.layers.forEach((layer) => {
+      previousNodesOutput = layer.FeedForward(previousNodesOutput)
+      memory.push(MatrixMath.FromArray(previousNodesOutput))
+    })
+
+    return memory
+  }
+
   Train(inputs: number[], targets: number[]) {
-    let outputs = this.FeedForward(inputs)
-    let errorsArray = new Array<MatrixMath>()
+    let outputsOfLayers = this.GetLayersOutput(inputs)
+    let outputs = MatrixMath.ToArray(
+      outputsOfLayers[outputsOfLayers.length - 1],
+    )
+    let errorVectors = new Array<MatrixMath>()
 
     // Calculate the error
     let errors = new Array<number>()
@@ -40,17 +59,19 @@ export default class Neuralnetwork {
     // Calculate Error List
     let errorMatrix = MatrixMath.FromArray(errors)
     errorMatrix = MatrixMath.Transpose(errorMatrix)
-    errorsArray.push(errorMatrix)
+    errorVectors.push(errorMatrix)
 
     for (let i = this.layers.length - 1; i >= 0; i--) {
       let layer = this.layers[i]
       var newError = MatrixMath.Multiply(
         MatrixMath.Transpose(layer.weight),
-        errorsArray[errorsArray.length - 1],
+        errorVectors[errorVectors.length - 1],
       )
-      errorsArray.push(newError)
+      errorVectors.push(newError)
     }
+    errorVectors.reverse()
 
-    console.table(errorsArray)
+    // Calculate the gradient
+    outputsOfLayers.map((x) => this.dsigmoid)
   }
 }

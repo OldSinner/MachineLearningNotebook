@@ -14,6 +14,7 @@ export default class MatrixMath {
       }
     }
   }
+
   ///////////////////////////
   static Multiply(matrix: MatrixMath, scalar: number | MatrixMath): MatrixMath {
     if (scalar instanceof MatrixMath) {
